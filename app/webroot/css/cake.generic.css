@@ -21,7 +21,20 @@
 	padding:0;
 }
 
-/** General Style Info **/
+div.clear {
+	clear: both;
+}
+
+
+.hidden {
+	display: none;
+}
+
+
+
+
+
+/** General Style Info 
 body {
 	background: #003d4c;
 	color: #fff;
@@ -72,7 +85,7 @@ p {
 	margin: 0 0 1em 0;
 }
 
-/** Layout **/
+/** Layout 
 #container {
 	text-align: left;
 }
@@ -110,7 +123,7 @@ p {
 	text-align: right;
 }
 
-/** containers **/
+/** containers 
 div.form,
 div.index,
 div.view {
@@ -130,7 +143,7 @@ div.actions h3 {
 }
 
 
-/** Tables **/
+/** Tables 
 table {
 	border-right:0;
 	clear: both;
@@ -186,7 +199,7 @@ table td.actions a {
 	color:#fff;
 }
 
-/** Paging **/
+/** Paging
 .paging {
 	background:#fff;
 	color: #ccc;
@@ -253,7 +266,7 @@ dd {
 	vertical-align: top;
 }
 
-/** Forms **/
+/** Forms 
 form {
 	clear: both;
 	margin-right: 20px;
@@ -366,7 +379,7 @@ form .submit input[type=submit] {
 form .submit input[type=submit]:hover {
 	background: #5BA150;
 }
-/* Form errors */
+/* Form errors 
 form .error {
 	background: #FFDACC;
 	-moz-border-radius: 4px;
@@ -395,7 +408,7 @@ form .error-message {
 	text-shadow: none;
 }
 
-/** Notices and Errors **/
+/** Notices and Errors 
 .message {
 	clear: both;
 	color: #fff;
@@ -486,7 +499,7 @@ p.error em {
 	color: #fff;
 }
 
-/**  Actions  **/
+/**  Actions  
 .actions ul {
 	margin: 0;
 	padding: 0;
@@ -503,7 +516,7 @@ p.error em {
 	clear: both;
 }
 
-/* Buttons and button links */
+/* Buttons and button links 
 input[type=submit],
 .actions ul li a,
 .actions a {
@@ -554,7 +567,7 @@ input[type=submit]:active,
 	text-decoration: none;
 }
 
-/** Related **/
+/** Related 
 .related {
 	clear: both;
 	display: block;
@@ -737,3 +750,7 @@ pre {
 #url-rewriting-warning {
 	display:none;
 }
+
+
+
+
