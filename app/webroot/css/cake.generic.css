@@ -16,11 +16,6 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-* {
-	margin:0;
-	padding:0;
-}
-
 div.clear {
 	clear: both;
 }
@@ -30,18 +25,21 @@ div.clear {
 	display: none;
 }
 
-
-
-
-
-/** General Style Info 
+/** General Style Info */
 body {
-	background: #003d4c;
-	color: #fff;
-	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
-	font-size:90%;
-	margin: 0;
+	background: #fcfcfc;
+	font-size: small;
 }
+
+#flash-area {
+	position: fixed;
+}
+
+.table {
+	font-size: small/;
+}
+
+/**
 a {
 	color: #003d4c;
 	text-decoration: underline;
@@ -199,13 +197,18 @@ table td.actions a {
 	color:#fff;
 }
 
-/** Paging
+/** Paging */
 .paging {
 	background:#fff;
 	color: #ccc;
 	margin-top: 1em;
 	clear:both;
 }
+
+.paging.top {
+	margin-bottom: 10px;
+}
+
 .paging .current,
 .paging .disabled,
 .paging a {

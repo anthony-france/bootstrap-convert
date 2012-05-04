@@ -17,11 +17,17 @@
  */
 ?>
 <div class="<?php echo $pluralVar;?> view">
-<?php
-echo "\t<?php echo \$this->TwitterBootstrap->button_form(\$this->TwitterBootstrap->icon('trash', 'white') .' '. __('Delete " . $singularHumanName . "'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('style'=>'danger', 'class'=>'pull-right', 'escape'=>false), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?> \n";
-echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('pencil', 'black') .' '. __('Edit " . $singularHumanName ."'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n";
-?>
-<h2><?php echo "<?php  echo __('{$singularHumanName}');?>";?></h2>
+
+	<div class="row-fluid">
+		<div class="span6"><h2><?php echo "<?php echo __('{$singularHumanName}');?>";?></h2></div>
+		<div class="span6">
+			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_form(\$this->TwitterBootstrap->icon('trash', 'white') .' '. __('Delete " . $singularHumanName . "'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('style'=>'danger', 'class'=>'pull-right', 'escape'=>false), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?> \n"; ?>
+			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('pencil', 'black') .' '. __('Edit " . $singularHumanName ."'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n";  ?>
+			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('List " . $pluralHumanName ."'), array('controller' => '{$pluralVar}', 'action'=>'index'), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n";  ?>
+			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('plus-sign', 'white') .' '.'Add {$singularHumanName}', array('action'=>'add'), array('class'=>'pull-right', 'escape'=>false, 'style'=>'primary'));?>"; ?>
+		</div>
+	</div>
+	
 	<dl>
 <?php
 foreach ($fields as $field) {

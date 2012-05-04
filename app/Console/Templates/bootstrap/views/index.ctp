@@ -17,19 +17,25 @@
  */
 ?>
 <div class="<?php echo $pluralVar;?> index">
-	<h2><?php echo "<?php echo __('{$pluralHumanName}');?>";?></h2>
-	<?php echo "<?php echo \$this->TwitterBootstrap->button_link('Add {$singularHumanName}', array('action'=>'add'), array('escape'=>true));?>"; ?>
-	<div class="pagination">
-	<?php
-		echo "<?php\n";
-		echo "\t\techo \$this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));\n";
-		echo "\t\techo \$this->Paginator->numbers(array('separator' => ''));\n";
-		echo "\t\techo \$this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));\n";
-		echo "\t?>\n";
-	?>
+	<div class="row">
+		<div class="span10"><h2><?php echo "<?php echo __('{$pluralHumanName}');?>";?></h2></div>
+		<div class="span2"><?php echo "<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('plus-sign', 'white') .' '.'Add {$singularHumanName}', array('action'=>'add'), array('class'=>'pull-right', 'escape'=>false, 'style'=>'primary'));?>"; ?></div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<div class="paging top pull-right">
+			<?php
+				echo "<?php\n";
+				echo "\t\techo \$this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));\n";
+				echo "\t\techo \$this->Paginator->numbers(array('separator' => ''));\n";
+				echo "\t\techo \$this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));\n";
+				echo "\t?>\n";
+			?>
+			</div>
+		</div>
 	</div>
 	
-	<table class="table striped-table">
+	<table class="table table-striped table-condensed">
 	<tr>
 	<?php  foreach ($fields as $field):?>
 		
@@ -69,21 +75,25 @@
 	echo "<?php endforeach; ?>\n";
 	?>
 	</table>
-	<p>
-	<?php echo "<?php
-	echo \$this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>";?>
-	</p>
 
-	<div class="pagination">
-	<?php
-		echo "<?php\n";
-		echo "\t\techo \$this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));\n";
-		echo "\t\techo \$this->Paginator->numbers(array('separator' => ''));\n";
-		echo "\t\techo \$this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));\n";
-		echo "\t?>\n";
-	?>
-	</div>
+	<div class="row">
+			<div class="span12">
+				<div class="paging bottom pull-right">
+				<?php
+					echo "<?php\n";
+					echo "\t\techo \$this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));\n";
+					echo "\t\techo \$this->Paginator->numbers(array('separator' => ''));\n";
+					echo "\t\techo \$this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));\n";
+					echo "\t?>\n";
+				?>
+				</div>
+			</div>
+				<p>
+				<?php echo "<?php
+				echo \$this->Paginator->counter(array(
+				'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+				));
+				?>";?>
+				</p>
+		</div>
 </div>

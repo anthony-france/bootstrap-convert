@@ -1,4 +1,5 @@
 <div class="contacts form">
+
 <?php echo $this->Form->create('Contact');?>
 	<fieldset>
 		<legend><?php echo __('Edit Contact'); ?></legend>
@@ -11,3 +12,6 @@
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
 </div>
+<?php $this->start('sidebar'); ?>
+<img src="http://placehold.it/350x900" />
+<?php $this->end(); ?>
