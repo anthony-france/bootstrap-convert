@@ -11,6 +11,3 @@
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
 </div>
-<?php $this->start('sidebar'); ?>
-<img src="http://placehold.it/350x900" />
-<?php $this->end(); ?>

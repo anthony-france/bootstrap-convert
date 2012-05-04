@@ -14,9 +14,11 @@ class ContactsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Contact->recursive = 0;
-		$this->set('contacts', $this->paginate());
-	}
+		$this->Contact->recursive = 2;
+		$contacts = $this->paginate();
+		$this->set('contacts', $contacts);
+		$this->set('_serialize', 'contacts');
+		}
 
 /**
  * view method
@@ -29,7 +31,9 @@ class ContactsController extends AppController {
 		if (!$this->Contact->exists()) {
 			throw new NotFoundException(__('Invalid contact'));
 		}
+		
 		$this->set('contact', $this->Contact->read(null, $id));
+		$this->set('_serialize', 'contact');
 	}
 
 /**
@@ -41,10 +45,10 @@ class ContactsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
+				$this->Session->setFlash(__('The contact has been saved'), 'default', null, 'success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'), 'default', null, 'error');
 			}
 		}
 	}
@@ -62,10 +66,10 @@ class ContactsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
+				$this->Session->setFlash(__('The contact has been saved'), 'default', null, 'success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'), 'default', null, 'error');
 			}
 		} else {
 			$this->request->data = $this->Contact->read(null, $id);
@@ -87,10 +91,11 @@ class ContactsController extends AppController {
 			throw new NotFoundException(__('Invalid contact'));
 		}
 		if ($this->Contact->delete()) {
-			$this->Session->setFlash(__('Contact deleted'));
+			$this->Session->setFlash(__('Contact deleted'), 'default', null, 'success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Contact was not deleted'));
+		$this->Session->setFlash(__('Contact was not deleted'), 'default', null, 'error');
 		$this->redirect(array('action' => 'index'));
 	}
+
 }

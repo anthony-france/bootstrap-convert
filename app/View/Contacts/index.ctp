@@ -18,7 +18,7 @@
 	<table class="table table-striped table-condensed">
 	<tr>
 			
-		<th>	</th>
+		<th></th>
 		
 			
 		<th><?php echo $this->Paginator->sort('name');?></th>
@@ -59,8 +59,3 @@
 				?>				</p>
 		</div>
 </div>
-
-<?php $this->start('sidebar'); ?>
-<img src="http://placehold.it/350x900" />
-<?php $this->end(); ?>
-

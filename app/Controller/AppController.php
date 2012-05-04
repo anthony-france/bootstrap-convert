@@ -36,6 +36,6 @@ class AppController extends Controller {
 	public $helpers = array("Session", "Html", 'Js', "Form", "TwitterBootstrap" => array("className" => "TwitterBootstrap.TwitterBootstrap"));
 	
 	public function beforeFilter() {
-		//$this->Session->setFlash("test");
+		
 	}
 }
