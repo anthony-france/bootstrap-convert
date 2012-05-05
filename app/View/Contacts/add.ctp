@@ -23,8 +23,8 @@
 		<li class="nav-header"><?php echo __('Actions'); ?></li>
 								<li><?php echo $this->Html->link($this->TwitterBootstrap->icon('list', 'black') .' '.__('List Contacts'), array('action' => 'index'), array('escape'=>false));?></li>
 					<li class="divider"></li>
-					<li><?php echo $this->Html->link($this->TwitterBootstrap->icon('flag', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'help'), array('escape'=>false)); ?> </li>
-					<li><?php echo $this->Html->link($this->TwitterBootstrap->icon('cog', 'black') .' '. __(' Settings'), array('controller' => 'settings'), array('escape'=>false)); ?> </li>
+					<li><?php echo $this->Html->link($this->TwitterBootstrap->icon('home', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'home'), array('escape'=>false)); ?> </li>
+			 </li>\n"; ?>
 	</ul>
 </div>
 <?php $this->end(); ?>

@@ -118,8 +118,8 @@
 		}
 	?>
 			<li class="divider"></li>
-			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('flag', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'help'), array('escape'=>false)); ?> </li>\n"; ?>
-			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('cog', 'black') .' '. __(' Settings'), array('controller' => 'settings'), array('escape'=>false)); ?> </li>\n"; ?>
+			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('home', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'home'), array('escape'=>false)); ?> </li>\n"; ?>
+			<?php //echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('cog', 'black') .' '. __(' Settings'), array('controller' => 'settings'), array('escape'=>false)); ?> </li>\n"; ?>
 	</ul>
 </div>
 <?php echo "<?php \$this->end(); ?>"; ?>
