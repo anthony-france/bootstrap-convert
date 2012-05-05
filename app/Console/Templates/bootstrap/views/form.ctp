@@ -67,7 +67,7 @@
 	<ul class="nav nav-list">
 		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
 			<?php if (strpos($action, 'add') === false): ?>
-					<li><?php echo "<?php echo \$this->Form->postLink(\$this->TwitterBootstrap->icon('trash', 'black') .' '.__('Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), , array('escape'=>false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
+					<li><?php echo "<?php echo \$this->Form->postLink(\$this->TwitterBootstrap->icon('trash', 'black') .' '.__('Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('escape'=>false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
 			<?php endif;?>
 					<li><?php echo "<?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('list', 'black') .' '.__('List " . $pluralHumanName . "'), array('action' => 'index'), array('escape'=>false));?>";?></li>
 			<?php
