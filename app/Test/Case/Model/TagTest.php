@@ -7,13 +7,6 @@ App::uses('Tag', 'Model');
  */
 class TagTestCase extends CakeTestCase {
 /**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = array('app.tag', 'app.document', 'app.documents_tag', 'app.image', 'app.images_tag');
-
-/**
  * setUp method
  *
  * @return void
