@@ -18,7 +18,9 @@
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
-<!DOCTYPE html">
+
+<!DOCTYPE html> 
+
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +39,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->script('jquery-1.7.2.min');
 		echo $this->Html->script('jquery-ui-1.8.20.custom.min');
 		echo $this->Html->script('bootstrap');
+		echo $this->Html->script('core');
 		
 
 		echo $this->fetch('meta');

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class ContactsController extends AppController {
 
-
+ 
 /**
  * index method
  *

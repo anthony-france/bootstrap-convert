@@ -18,6 +18,25 @@
 ?>
 <div class="<?php echo $pluralVar;?> form">
 
+	<div class="row-fluid">
+		<div class="span12">
+		<?php	
+			switch ($action) {
+				case "add":
+					 echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('List " . $pluralHumanName ."'), array('controller' => '{$pluralVar}', 'action'=>'index'), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n"; 
+				break;
+				case "edit":
+					echo "\t<?php echo \$this->TwitterBootstrap->button_form(\$this->TwitterBootstrap->icon('trash', 'white') .' '. __('Delete " . $singularHumanName . "'), array('action' => 'delete', \$this->request->data['{$modelClass}']['{$primaryKey}']), array('style'=>'danger', 'class'=>'pull-right', 'escape'=>false), __('Are you sure you want to delete # %s?', \$this->request->data['{$modelClass}']['{$primaryKey}'])); ?> \n";
+					echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('info-sign', 'black') .' '. __('View " . $singularHumanName ."'), array('action' => 'view', \$this->request->data['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n"; 
+				break;
+				default:
+					echo "&nbsp;";
+				break;
+			}
+		 ?>
+		</div>
+	</div>
+
 <?php echo "<?php echo \$this->Form->create('{$modelClass}');?>\n";?>
 	<fieldset>
 		<legend><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></legend>
@@ -42,3 +61,31 @@
 	echo "<?php echo \$this->Form->end(__('Submit'));?>\n";
 ?>
 </div>
+
+<?php echo "<?php \$this->start('sidebar'); ?>"; ?>
+<div class="sidebar well">
+	<ul class="nav nav-list">
+		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
+			<?php if (strpos($action, 'add') === false): ?>
+					<li><?php echo "<?php echo \$this->Form->postLink(\$this->TwitterBootstrap->icon('trash', 'black') .' '.__('Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), , array('escape'=>false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
+			<?php endif;?>
+					<li><?php echo "<?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('list', 'black') .' '.__('List " . $pluralHumanName . "'), array('action' => 'index'), array('escape'=>false));?>";?></li>
+			<?php
+					$done = array();
+					foreach ($associations as $type => $data) {
+						foreach ($data as $alias => $details) {
+							if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
+								echo "\t\t<li class=\"nav-header\"><?php echo \"". Inflector::humanize($details['controller']) ."\" ?> </li>\n";
+								echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('escape'=>false)); ?> </li>\n";
+								echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('plus', 'black') .' '. __(' New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape'=>false)); ?> </li>\n";
+								$done[] = $details['controller'];
+							}
+						}
+					}
+			?>
+		<li class="divider"></li>
+			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('flag', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'help'), array('escape'=>false)); ?> </li>\n"; ?>
+			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('cog', 'black') .' '. __(' Settings'), array('controller' => 'settings'), array('escape'=>false)); ?> </li>\n"; ?>
+	</ul>
+</div>
+<?php echo "<?php \$this->end(); ?>"; ?>

@@ -39,6 +39,10 @@ body {
 	font-size: small/;
 }
 
+div.sidebar.well {
+	padding: 0px;
+}
+
 /**
 a {
 	color: #003d4c;

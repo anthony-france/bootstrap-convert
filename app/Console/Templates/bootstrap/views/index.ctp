@@ -39,7 +39,7 @@
 	<tr>
 	<?php  foreach ($fields as $field):?>
 		
-		<th><?php if ($field != 'id'): ?><?php echo "<?php echo \$this->Paginator->sort('{$field}');?>";?><?php endif; ?></th>
+		<th><?php echo "<?php echo \$this->Paginator->sort('{$field}');?>";?></th>
 		
 	<?php endforeach;?>
 	</tr>
@@ -60,11 +60,11 @@
 			}
 			if ($isKey !== true) {
 				
-				if ($field == 'id') {
-					/* echo "\t\t<td><?php echo \$this->Html->link(\${$singularVar}['{$modelClass}']['{$field}'], array('action'=>'view', \${$singularVar}['{$modelClass}']['{$field}'])); ?>&nbsp;</td>\n"; */
-					echo "\t\t<td><?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('Details'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-left')); ?> \n";
+				if ($field == $displayField) {
+					 echo "\t\t<td><?php echo \$this->Html->link(\${$singularVar}['{$modelClass}']['{$field}'], array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>&nbsp;</td>\n"; 
+					/* echo "\t\t<td><?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('Details'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-left')); ?> \n"; */
 				}
-				else {
+				else  {
 					echo "\t\t<td><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
 				}
 			}
@@ -97,3 +97,29 @@
 				</p>
 		</div>
 </div>
+
+
+<?php echo "<?php \$this->start('sidebar'); ?>"; ?>
+<div class="sidebar well">
+	<ul class="nav nav-list">
+		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
+		<li><?php echo "<?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('plus-sign', 'black') .' '.__('New " . $singularHumanName . "'), array('action' => 'add'),  array('escape'=>false)); ?>";?></li>
+	<?php
+		$done = array();
+		foreach ($associations as $type => $data) {
+			foreach ($data as $alias => $details) {
+				if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
+					echo "\t\t<li class=\"nav-header\"><?php echo \"". Inflector::humanize($details['controller']) ."\" ?> </li>\n";
+					echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('list', 'black') .' '.__('List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'),  array('escape'=>false)); ?> </li>\n";
+					echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('plus-sign', 'black') .' '.__('New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape'=>false)); ?> </li>\n";
+					$done[] = $details['controller'];
+				}
+			}
+		}
+	?>
+			<li class="divider"></li>
+			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('flag', 'black') .' '. __(' Help'), array('controller' => 'pages', 'action' => 'display', 'help'), array('escape'=>false)); ?> </li>\n"; ?>
+			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('cog', 'black') .' '. __(' Settings'), array('controller' => 'settings'), array('escape'=>false)); ?> </li>\n"; ?>
+	</ul>
+</div>
+<?php echo "<?php \$this->end(); ?>"; ?>
