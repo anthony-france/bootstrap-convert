@@ -11,16 +11,16 @@ class DateBehavior extends ModelBehavior {
 	}
 	
 	
-	public function dateFormat(Model $Model, $array, $find) {
+	public function dateFormat(Model $Model, $array, $field) {
 		
 		foreach($array as $k => $v) {
 			if (is_array($v)) {
 		
-				$array[$k] = $this->dateFormat($Model, $v, $find);
+				$array[$k] = $this->dateFormat($Model, $v, $field);
 			}
 			else {
 				
-				if ($k == $find) {
+				if ($k == $field) {
 					
 					$array[$k] = $Model->ago($v);
 				}
