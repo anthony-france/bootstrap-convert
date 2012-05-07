@@ -24,7 +24,7 @@
  * @return void
  */
 	public function <?php echo $admin ?>index() {
-		$this-><?php echo $currentModelName ?>->recursive = 2;
+		$this-><?php echo $currentModelName ?>->recursive = 4;
 		$<?php echo $pluralName ?> = $this->paginate();
 		$this->set('<?php echo $pluralName ?>', $<?php echo $pluralName ?>);
 		$this->set('_serialize', '<?php echo $pluralName ?>');
@@ -41,7 +41,7 @@
 		if (!$this-><?php echo $currentModelName; ?>->exists()) {
 			throw new NotFoundException(__('Invalid <?php echo strtolower($singularHumanName); ?>'));
 		}
-		
+		$this-><?php echo $currentModelName ?>->recursive = 4;
 		$this->set('<?php echo $singularName; ?>', $this-><?php echo $currentModelName; ?>->read(null, $id));
 		$this->set('_serialize', '<?php echo $singularName; ?>');
 	}
@@ -111,6 +111,7 @@
 <?php endif; ?>
 			}
 		} else {
+			$this-><?php echo $currentModelName ?>->recursive = 4;
 			$this->request->data = $this-><?php echo $currentModelName; ?>->read(null, $id);
 		}
 <?php

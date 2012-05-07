@@ -18,8 +18,8 @@
 ?>
 <div class="<?php echo $pluralVar;?> index">
 	<div class="row">
-		<div class="span10"><h2><?php echo "<?php echo __('{$pluralHumanName}');?>";?></h2></div>
-		<div class="span2"><?php echo "<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('plus-sign', 'white') .' '.'Add {$singularHumanName}', array('action'=>'add'), array('class'=>'pull-right', 'escape'=>false, 'style'=>'primary'));?>"; ?></div>
+		<div class="span6"><h2><?php echo "<?php echo __('{$pluralHumanName}');?>";?></h2></div>
+		<div class="span6"><?php echo "<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('plus-sign', 'white') .' '.'Add {$singularHumanName}', array('action'=>'add'), array('class'=>'pull-right', 'escape'=>false, 'style'=>'primary'));?>"; ?></div>
 	</div>
 	<div class="row">
 		<div class="span12">
@@ -38,10 +38,13 @@
 	<table class="table table-striped table-condensed">
 	<tr>
 	<?php  foreach ($fields as $field):?>
-		
-		<th><?php echo "<?php echo \$this->Paginator->sort('{$field}');?>";?></th>
-		
+		<?php if($field == $primaryKey): ?>
+			<?php echo "<?php if ( \$settings[\"hide_column\"] !== true ): ?><th><?php echo \$this->Paginator->sort('{$field}');?></th><?php endif; ?>";?>
+		<?php else: ?>
+			<th><?php echo "<?php echo \$this->Paginator->sort('{$field}');?>";?></th>
+		<?php endif; ?>
 	<?php endforeach;?>
+		<th></th>
 	</tr>
 	<?php
 	echo "<?php
@@ -59,17 +62,19 @@
 				}
 			}
 			if ($isKey !== true) {
-				
-				if ($field == $displayField) {
-					 echo "\t\t<td><?php echo \$this->Html->link(\${$singularVar}['{$modelClass}']['{$field}'], array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>&nbsp;</td>\n"; 
+				 if ($field == $primaryKey) {
+					echo "\t\t<?php if ( \$settings[\"hide_column\"] !== true ): ?><td><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td><?php endif; ?>\n";
+				 }
+				elseif ($field == $displayField) {
+					 echo "\t\t<td><?php echo \$this->Html->link(\${$singularVar}['{$modelClass}']['{$field}'], array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>&nbsp; <?php if (!empty(\${$singularVar}['Tag'])) echo \$this->element('tags', array('tags' => \${$singularVar}['Tag'])); ?></td>\n"; 
 					/* echo "\t\t<td><?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('Details'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-left')); ?> \n"; */
 				}
-				else  {
-					echo "\t\t<td><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
+				else  {	
+					echo "\t\t<td><?php h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
 				}
 			}
 		}
-
+	echo "\t\t<td>\n\t\t\t<div><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('cog', 'black'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'class'=>'row-edit-link pull-right')); ?></div>&nbsp;</td>\n";
 	echo "\t</tr>\n";
 
 	echo "<?php endforeach; ?>\n";
@@ -100,8 +105,6 @@
 
 
 <?php echo "<?php \$this->start('sidebar'); ?>"; ?>
-<div class="sidebar well">
-	<ul class="nav nav-list">
 		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
 		<li><?php echo "<?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('plus-sign', 'black') .' '.__('New " . $singularHumanName . "'), array('action' => 'add'),  array('escape'=>false)); ?>";?></li>
 	<?php
@@ -119,7 +122,4 @@
 	?>
 			<li class="divider"></li>
 			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('home', 'black') .' '. __(' Home'), array('controller' => 'pages', 'action' => 'display', 'home'), array('escape'=>false)); ?> </li>\n"; ?>
-			
-	</ul>
-</div>
 <?php echo "<?php \$this->end(); ?>"; ?>

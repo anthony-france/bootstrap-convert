@@ -57,12 +57,17 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 				<div id="header">
 					<h1><?php echo $this->Html->link($cakeDescription, '/'); ?></h1>
 				</div>
+
 				<div id="content">
 					<div class="row-fluid">
-						<div class="span2">
-							<?php echo $this->fetch('sidebar'); ?>&nbsp;
+						<div class="span3">
+							<div class="sidebar well">
+								<ul class="nav nav-list">
+									<?php echo $this->fetch('sidebar'); ?>&nbsp;
+								</ul>
+							</div>
 						</div>
-						<div class="span10">
+						<div class="span9">
 							<?php echo $this->fetch('content'); ?>&nbsp;
 						</div>
 					</div>

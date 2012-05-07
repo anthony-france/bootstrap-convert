@@ -17,7 +17,7 @@
  */
 ?>
 <div class="<?php echo $pluralVar;?> form">
-
+	
 	<div class="row-fluid">
 		<div class="span12">
 		<?php	
@@ -63,8 +63,6 @@
 </div>
 
 <?php echo "<?php \$this->start('sidebar'); ?>"; ?>
-<div class="sidebar well">
-	<ul class="nav nav-list">
 		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
 			<?php if (strpos($action, 'add') === false): ?>
 					<li><?php echo "<?php echo \$this->Form->postLink(\$this->TwitterBootstrap->icon('trash', 'black') .' '.__('Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('escape'=>false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
@@ -85,7 +83,4 @@
 			?>
 		<li class="divider"></li>
 			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('home', 'black') .' '. __(' Home'), array('controller' => 'pages', 'action' => 'display', 'home'), array('escape'=>false)); ?> </li>\n"; ?>
-			
-	</ul>
-</div>
 <?php echo "<?php \$this->end(); ?>"; ?>

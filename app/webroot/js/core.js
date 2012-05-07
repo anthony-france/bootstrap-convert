@@ -7,5 +7,14 @@ $(document).ready(function() {
 			$("#flash-area").remove();
 	  });
 	  
-	  
+	  $(".row-edit-link").hide();
+	  $("tr").hover(
+		function(){ 
+			$(this).find(".row-edit-link").stop().fadeIn(250);
+		}, 
+		function() { 
+			$(this).find(".row-edit-link").stop().fadeOut(250);
+		}
+	);
+  
  });

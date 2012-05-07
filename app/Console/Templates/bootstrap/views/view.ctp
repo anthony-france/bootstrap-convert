@@ -19,8 +19,10 @@
 <div class="<?php echo $pluralVar;?> view">
 	
 	<div class="row row-fluid">
-		<div class="span6"><h2><?php echo "<?php echo __('{$singularHumanName}');?>";?></h2></div>
-		<div class="span6">
+		<div class="span12"><h2><?php echo "<?php echo __('{$singularHumanName}');?>";?></h2><?php echo "<?php if (!empty(\${$singularVar}['Tag'])) echo \$this->element('tags', array('tags' => \${$singularVar}['Tag'])); ?>"; ?></div>
+	</div>
+	<div class="row row-fluid">
+		<div class="span12">
 			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_form(\$this->TwitterBootstrap->icon('trash', 'white') .' '. __('Delete " . $singularHumanName . "'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('style'=>'danger', 'class'=>'pull-right', 'escape'=>false), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?> \n"; ?>
 			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('pencil', 'black') .' '. __('Edit " . $singularHumanName ."'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n";  ?>
 			<?php echo "\t<?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('List " . $pluralHumanName ."'), array('controller' => '{$pluralVar}', 'action'=>'index'), array('escape'=>false, 'style'=>'default', 'class'=>'pull-right')); ?> \n";  ?>
@@ -93,7 +95,7 @@
 	<div class="row row-fluid">
 		<div class="span12">
 			<div class="related">
-				<h3><?php echo "<?php echo __('Related " . $otherPluralHumanName . "');?>";?></h3>
+				<h3><?php echo "<?php echo __('Related " . $otherPluralHumanName . "');?>";?><?php echo "<?php echo \$this->TwitterBootstrap->badge(count(\${$singularVar}['{$alias}'])); ?>"; ?></h3>
 				<?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])):?>\n";?>
 				<table class="table table-striped table-condensed">
 					<tr>
@@ -123,8 +125,6 @@
 	
 	
 <?php echo "<?php \$this->start('sidebar'); ?>"; ?>
-<div class="sidebar well">
-	<ul class="nav nav-list">
 		<li class="nav-header"><?php echo "<?php echo __('Actions'); ?>"; ?></li>
 			<?php
 				echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('pencil', 'black') .' '.__('Edit " . $singularHumanName ."'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false)); ?> </li>\n";
@@ -146,8 +146,5 @@
 			?>
 			<li class="divider"></li>
 			<?php echo "\t\t<li><?php echo \$this->Html->link(\$this->TwitterBootstrap->icon('home', 'black') .' '. __(' Home'), array('controller' => 'pages', 'action' => 'display', 'home'), array('escape'=>false)); ?> </li>\n"; ?>
-			
-	</ul>
-</div>
 <?php echo "<?php \$this->end(); ?>"; ?>
 

@@ -43,6 +43,10 @@ div.sidebar.well {
 	padding: 0px;
 }
 
+.row-edit-link {
+	position: fixed;
+}
+
 /**
 a {
 	color: #003d4c;
