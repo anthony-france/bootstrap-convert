@@ -70,7 +70,7 @@
 					/* echo "\t\t<td><?php echo \$this->TwitterBootstrap->button_link(\$this->TwitterBootstrap->icon('list', 'black') .' '. __('Details'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape'=>false, 'style'=>'default', 'class'=>'pull-left')); ?> \n"; */
 				}
 				else  {	
-					echo "\t\t<td><?php h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
+					echo "\t\t<td><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
 				}
 			}
 		}
