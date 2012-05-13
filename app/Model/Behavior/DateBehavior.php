@@ -22,7 +22,7 @@ class DateBehavior extends ModelBehavior {
 				
 				if ($k == $field) {
 					
-					$array[$k] = $Model->ago($v);
+					$array[$k.'-formated'] = $Model->ago($v); 
 				}
 			}
 		}
